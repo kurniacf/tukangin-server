@@ -1,37 +1,35 @@
 <?php
 
-    include_once('koneksi.php');
+include_once('koneksi.php');
 
-    if(!empty($_GET['id'])){
-        $id = $_GET['id'];
-        $query = "SELECT * FROM Content WHERE id = '$id'";
-        
-    }else if(!empty($_GET['user_id'])){
-        $user_id = $_GET['user_id'];
-        $query = "SELECT * FROM Content WHERE user_id = '$user_id'";
+if (!empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $query = "SELECT * FROM Content WHERE id = '$id'";
+} else if (!empty($_GET['user_id'])) {
+    $user_id = $_GET['user_id'];
+    $query = "SELECT * FROM Content WHERE user_id = '$user_id'";
+}
+
+$get = mysqli_query($connect, $query);
+$data = array();
+
+if (mysqli_num_rows($get) > 0) {
+    while ($row = mysqli_fetch_assoc($get)) {
+        $data[] = $row;
     }
 
-    $get = mysqli_query($connect, $query);
-    $data = array();
+    set_response(true, "Data ditemukan", $data);
+} else {
+    set_response(false, "Data tidak ditemukan", $data);
+}
 
-    if(mysqli_num_rows($get) > 0){
-        while($row = mysqli_fetch_assoc($get)){
-            $data[] = $row;
-        }
+function set_response($isSuccess, $message, $data)
+{
+    $result = array(
+        'isSuccess' => $isSuccess,
+        'message' => $message,
+        'data' => $data
+    );
 
-        set_response(true, "Data ditemukan", $data);
-
-    }else{
-        set_response(false, "Data tidak ditemukan", $data);
-    }
-
-    function set_response($isSuccess, $message, $data){
-        $result = array(
-            'isSuccess' => $isSuccess,
-            'message' => $message,
-            'data' => $data
-        );
-
-        echo json_encode($result);
-    }
-?>
+    echo json_encode($result);
+}
