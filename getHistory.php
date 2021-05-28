@@ -5,8 +5,10 @@
     if(!empty($_GET['id'])){
         $id = $_GET['id'];
         $query = "SELECT * FROM Content WHERE id = '$id'";
-    }else{
-        $query = "SELECT * FROM Content";
+        
+    }else if(!empty($_GET['user_id'])){
+        $user_id = $_GET['user_id'];
+        $query = "SELECT * FROM Content WHERE user_id = '$user_id'";
     }
 
     $get = mysqli_query($connect, $query);
