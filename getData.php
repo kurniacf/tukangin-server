@@ -9,7 +9,7 @@ if (!empty($_GET['id'])) {
     $query = "SELECT * FROM Content";
 }
 
-$get = pg_query($dsn, $query);
+$get = pg_query($connect, $query);
 $data = array();
 
 if (pg_num_rows($get) > 0) {

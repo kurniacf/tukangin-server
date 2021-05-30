@@ -38,13 +38,13 @@
 // }
 
 
-$con = "
+$connect = "
         host=ec2-52-4-111-46.compute-1.amazonaws.com 
         dbname=d1msbotm7r9qbo 
         user=ejexbwyopvqhbx 
         password=d61f62e3127022400fb6816ed6e5f400e0c4c099a8e27ab728f3f7bef201f6cf
 ";
-if (!$con) {
+if (!$connect) {
     echo "Database connection failed.";
 } else {
     echo "Database connection success.";
