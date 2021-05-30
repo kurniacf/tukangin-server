@@ -38,21 +38,14 @@
 // }
 
 
-$db_handle = pg_connect("
+$con = "
         host=ec2-52-4-111-46.compute-1.amazonaws.com 
         dbname=d1msbotm7r9qbo 
         user=ejexbwyopvqhbx 
         password=d61f62e3127022400fb6816ed6e5f400e0c4c099a8e27ab728f3f7bef201f6cf
-");
-if ($db_handle) {
-    echo 'Connection attempt succeeded.';
+";
+if (!$con) {
+    echo "Database connection failed.";
 } else {
-    echo 'Connection attempt failed.';
+    echo "Database connection success.";
 }
-echo "<h3>Connection Information</h3>";
-
-echo "DATABASE NAME:" . pg_dbname($db_handle) . "<br>";
-
-echo "HOSTNAME: " . pg_host($db_handle) . "<br>";
-
-echo "PORT: " . pg_port($db_handle) . "<br>";
