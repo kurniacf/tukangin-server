@@ -3,7 +3,7 @@
 
     if(!empty($_POST['id'])){
         $id = $_POST['id'];
-        $query = "DELETE FROM produk WHERE id = '$id'";
+        $query = "DELETE FROM Content WHERE id = '$id'";
         $delete = mysqli_query($connect, $query);
 
         if($delete){
