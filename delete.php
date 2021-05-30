@@ -4,7 +4,7 @@ include_once('koneksi.php');
 if (!empty($_POST['id'])) {
     $id = $_POST['id'];
     $query = "DELETE FROM Content WHERE id = '$id'";
-    $delete = mysqli_query($connect, $query);
+    $delete = pg_query($connect, $query);
 
     if ($delete) {
         set_response(true, "Success delete");

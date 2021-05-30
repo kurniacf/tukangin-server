@@ -1,41 +1,40 @@
 <?php
-    include_once('koneksi.php');
+include_once('koneksi.php');
 
-    if(!empty($_POST['nama']) && !empty($_POST['email']) && !empty($_POST['password'])){
-        $nama = $_POST['nama'];
-        $email = $_POST['email'];
-        $password = md5($_POST['password']);
+if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['handphone']) && !empty($_POST['password'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $handphone = $_POST['handphone'];
+    $password = md5($_POST['password']);
 
-        $query = "SELECT * FROM Users WHERE email = '$email'";
-        $get = mysqli_query($connect, $query);
+    $query = "SELECT * FROM customer WHERE email = '$email'";
+    $get = pg_query($connect, $query);
 
-        $data = array();
+    $data = array();
 
-        if(mysqli_num_rows($get) > 0){
-            set_response(true, "Email sudah terdaftar", $data);
-        }else{
-            $query = "INSERT INTO Users(nama, email, password) VALUES ('$nama', '$email', '$password')";
+    if (pg_num_rows($get) > 0) {
+        set_response(true, "Email sudah terdaftar", $data);
+    } else {
+        $query = "INSERT INTO customer(name, email, handphone, password) VALUES ('$name', '$email', '$handphone', '$password')";
 
-            $insert = mysqli_query($connect, $query);
+        $insert = pg_query($connect, $query);
 
-            if($insert){
-                set_response(true, "Register success");
-            }else{
-                set_response(false, "Register Failed");
-            }
+        if ($insert) {
+            set_response(true, "Register success");
+        } else {
+            set_response(false, "Register Failed");
         }
     }
-    else{
-        set_response(false, "Tidak boleh kosong");
-    }
+} else {
+    set_response(false, "Tidak boleh kosong");
+}
 
-    function set_response($isSuccess, $message){
-        $result = array(
-            'isSuccess' => $isSuccess,
-            'message' => $message
-        );
+function set_response($isSuccess, $message)
+{
+    $result = array(
+        'isSuccess' => $isSuccess,
+        'message' => $message
+    );
 
-        echo json_encode($result);
-    }
-
-?>
+    echo json_encode($result);
+}
