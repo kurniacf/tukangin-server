@@ -66,11 +66,11 @@ $connect = pg_connect($connection_string);
 //         user=ejexbwyopvqhbx 
 //         password=d61f62e3127022400fb6816ed6e5f400e0c4c099a8e27ab728f3f7bef201f6cf
 // ";
-if (!$connect) {
-    echo "Database connection failed.";
-} else {
-    echo "Database connection success.";
-}
+// if (!$connect) {
+//     echo "Database connection failed.";
+// } else {
+//     echo "Database connection success.";
+// }
 
 // if ($connect) {
 //     echo "Connected to " . pg_host($dbconn);
