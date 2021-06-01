@@ -1,7 +1,7 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['handphone']) && !empty($_POST['password'])) {
+if (!empty($$_GET['id'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $handphone = $_POST['handphone'];

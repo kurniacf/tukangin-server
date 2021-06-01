@@ -163,3 +163,18 @@ CREATE TABLE divisi(
     nama_divisi VARCHAR(255),
     harga INTEGER
 );
+
+-- ALTER TABLE customer 
+--     ALTER COLUMN avatar TYPE BYTEA;
+
+ALTER TABLE mitra 
+    ALTER COLUMN image TYPE TEXT;
+
+-- ALTER TABLE tukang 
+--     ALTER COLUMN ktp TYPE BYTEA, 
+--     ALTER COLUMN selfie_ktp TYPE BYTEA;
+
+ALTER TABLE mitra 
+    ALTER COLUMN image TYPE BYTEA;
+
+ALTER TABLE mitra ALTER COLUMN image TYPE BYTEA USING (trim(image)::BYTEA);
