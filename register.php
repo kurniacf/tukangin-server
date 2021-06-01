@@ -1,13 +1,16 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['handphone']) && !empty($_POST['password'])) {
+if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['handphone']) && !empty($_POST['ktp']) && !empty($_POST['selfie_ktp']) && !empty($_POST['password'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $address = $_POST['address'];
     $handphone = $_POST['handphone'];
+    $ktp = $_POST['ktp'];
+    $selfie_ktp = $_POST['selfie_ktp'];
     $password = md5($_POST['password']);
 
-    $query = "SELECT * FROM customer WHERE email = '$email'";
+    $query = "SELECT * FROM tukang WHERE email = '$email'";
     $get = pg_query($connect, $query);
 
     $data = array();
@@ -15,9 +18,16 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['handphon
     if (pg_num_rows($get) > 0) {
         set_response(true, "Email sudah terdaftar", $data);
     } else {
-        $query = "INSERT INTO customer(name, email, handphone, password) VALUES ('$name', '$email', '$handphone', '$password')";
+        $ktp = $_FILES['ktp']['name'];
+        $file = $_FILES['ktp']['tmp_name'];
+
+        $dir = "ktp/";
+        move_uploaded_file($file, $dir . $ktp);
+
+        $query = "INSERT INTO tukang(name, email, handphone, password, ktp) VALUES ('$name', '$email', '$handphone', '$password', '$ktp')";
 
         $insert = pg_query($connect, $query);
+
 
         if ($insert) {
             set_response(true, "Register success");

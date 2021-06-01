@@ -145,3 +145,21 @@ CREATE TABLE mitra(
     description VARCHAR (255),
     image VARCHAR(255) DEFAULT NULL
 );
+
+CREATE TABLE tukang(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR (50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    handphone VARCHAR(15) NOT NULL,
+    ktp VARCHAR(255) DEFAULT NULL,
+    selfie_ktp VARCHAR(255) DEFAULT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE divisi(
+    id SERIAL PRIMARY KEY,
+    tukang_id BIGINT REFERENCES tukang (id) NOT NULL,
+    nama_divisi VARCHAR(255),
+    harga INTEGER
+);

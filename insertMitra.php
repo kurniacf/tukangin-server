@@ -1,10 +1,9 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['id'])) {
+if (!empty($_POST['name']) && !empty($_POST['description'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $image = $_POST['image'];
 
     if (empty($_FILES['image'])) {
         set_response(false, "Foto harus diisi");

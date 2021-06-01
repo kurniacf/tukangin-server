@@ -5,7 +5,7 @@ if (!empty($_POST['id']) && !empty($_POST['name']) && !empty($_POST['email']) &&
     $name = $_POST['name'];
     $email = $_POST['email'];
     $handphone = $_POST['handphone'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     if (empty($_FILES['avatar'])) {
         set_response(false, "Foto harus diisi");
