@@ -1,7 +1,7 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['handphone']) && !empty($_POST['ktp']) && !empty($_POST['selfie_ktp']) && !empty($_POST['password'])) {
+if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['handphone']) && !empty($_POST['password'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $address = $_POST['address'];
@@ -20,14 +20,14 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
             set_response(false, "Foto harus diisi");
         } else {
             $ktp = $_FILES['ktp']['name'];
-            $file = $_FILES['ktp']['tmp_name'];
-            $dir = "ktp/";
-            move_uploaded_file($file, $dir . $ktp);
+            $file1 = $_FILES['ktp']['tmp_name'];
+            $dir1 = "ktp/";
+            move_uploaded_file($file1, $dir1 . $ktp);
 
-            $ktp = $_FILES['selfie_ktp']['name'];
-            $file = $_FILES['selfie_ktp']['tmp_name'];
-            $dir = "selfie_ktp/";
-            move_uploaded_file($file, $dir . $selfie_ktp);
+            $selfie_ktp = $_FILES['selfie_ktp']['name'];
+            $file2 = $_FILES['selfie_ktp']['tmp_name'];
+            $dir2 = "selfie_ktp/";
+            move_uploaded_file($file2, $dir2 . $selfie_ktp);
 
             $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password')";
 
