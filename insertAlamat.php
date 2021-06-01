@@ -1,7 +1,7 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['id'])) {
+if (!empty($_POST['customer_id'])) {
     $customer_id = $_POST['customer_id'];
     $provinsi = $_POST['provinsi'];
     $kabupaten = $_POST['kabupaten'];
