@@ -2,9 +2,9 @@
 
 include_once('koneksi.php');
 
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $query = "SELECT * FROM divisi WHERE id = '$id'";
+if (!empty($_GET['tukang_id'])) {
+    $tukang_id = $_GET['tukang_id'];
+    $query = "SELECT * FROM divisi WHERE tukang_id = '$tukang_id'";
 } else {
     $query = "SELECT * FROM divisi";
 }

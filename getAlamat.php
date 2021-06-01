@@ -2,9 +2,9 @@
 
 include_once('koneksi.php');
 
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $query = "SELECT * FROM alamat WHERE id = '$id'";
+if (!empty($_GET['customer_id'])) {
+    $customer_id = $_GET['customer_id'];
+    $query = "SELECT * FROM alamat WHERE customer_id = '$customer_id'";
 } else {
     $query = "SELECT * FROM alamat";
 }
