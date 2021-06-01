@@ -3,26 +3,25 @@ include_once('koneksi.php');
 
 if (!empty($_POST['id'])) {
     $name = $_POST['name'];
-    $email = $_POST['email'];
-    $handphone = $_POST['handphone'];
-    $password = $_POST['password'];
+    $description = $_POST['description'];
+    $image = $_POST['image'];
 
-    if (empty($_FILES['avatar'])) {
+    if (empty($_FILES['image'])) {
         set_response(false, "Foto harus diisi");
     } else {
-        $avatar = $_FILES['avatar']['name'];
-        $file = $_FILES['avatar']['tmp_name'];
+        $image = $_FILES['image']['name'];
+        $file = $_FILES['image']['tmp_name'];
 
-        $dir = "avatar/";
-        move_uploaded_file($file, $dir . $avatar);
+        $dir = "image/";
+        move_uploaded_file($file, $dir . $image);
 
-        $query = "UPDATE customer set name = '$name', email = '$email', handphone = '$handphone', password = '$password', avatar = '$avatar' WHERE id = '$id'";
+        $query = "UPDATE mitra set name = '$name', email = '$email', handphone = '$handphone', password = '$password', image = '$image' WHERE id = '$id'";
         $update = pg_query($connect, $query);
 
         if ($update) {
-            set_response(true, "Success update customer");
+            set_response(true, "Success update mitra");
         } else {
-            set_response(false, "Failed update customer");
+            set_response(false, "Failed update mitra");
         }
     }
 } else {
