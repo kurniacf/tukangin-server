@@ -7,8 +7,6 @@ if (!empty($_POST['id'])) {
     $handphone = $_POST['handphone'];
     $id = $_POST['id'];
 
-
-
     if (empty($_FILES['avatar'])) {
         set_response(false, "Foto harus diisi");
     } else {

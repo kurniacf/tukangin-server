@@ -13,17 +13,13 @@ if (!empty($_POST['id'])) {
     if (empty($_FILES['ktp']) && empty($_FILES['selfie_ktp'])) {
         set_response(false, "Foto harus diisi");
     } else {
-        $ktp = $_FILES['ktp']['name'];
-        $file1 = $_FILES['ktp']['tmp_name'];
-        $dir1 = "ktp/";
-        move_uploaded_file($file1, $dir1 . $ktp);
+        $avatarTukang = $_FILES['avatarTukang']['name'];
+        $file = $_FILES['avatarTukang']['tmp_name'];
 
-        $selfie_ktp = $_FILES['selfie_ktp']['name'];
-        $file2 = $_FILES['selfie_ktp']['tmp_name'];
-        $dir2 = "selfie_ktp/";
-        move_uploaded_file($file2, $dir2 . $selfie_ktp);
+        $dir = "avatarTukang/";
+        move_uploaded_file($file, $dir . $avatarTukang);
 
-        $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', ktp = '$ktp', selfie_ktp = '$selfie_ktp', password = '$password', nik = '$nik' WHERE id = '$id'";
+        $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', avatarTukang = '$avatarTukang', password = '$password', nik = '$nik' WHERE id = '$id'";
 
         $update = pg_query($connect, $query);
 
