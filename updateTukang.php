@@ -6,10 +6,11 @@ if (!empty($_POST['id'])) {
     $email = $_POST['email'];
     $address = $_POST['address'];
     $handphone = $_POST['handphone'];
+    $nik = $_POST['nik'];
     $password = md5($_POST['password']);
     $id = $_POST['id'];
 
-    if (empty($_FILES['ktp']) || empty($_FILES['selfie_ktp'])) {
+    if (empty($_FILES['ktp']) && empty($_FILES['selfie_ktp'])) {
         set_response(false, "Foto harus diisi");
     } else {
         $ktp = $_FILES['ktp']['name'];
@@ -22,14 +23,14 @@ if (!empty($_POST['id'])) {
         $dir2 = "selfie_ktp/";
         move_uploaded_file($file2, $dir2 . $selfie_ktp);
 
-        $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', ktp = '$ktp', selfie_ktp = '$selfie_ktp', password = '$password' WHERE id = '$id'";
+        $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', ktp = '$ktp', selfie_ktp = '$selfie_ktp', password = '$password', nik = '$nik' WHERE id = '$id'";
 
         $update = pg_query($connect, $query);
 
         if ($update) {
-            set_response(true, "Success update customer");
+            set_response(true, "Success update tukang");
         } else {
-            set_response(false, "Failed update customer");
+            set_response(false, "Failed update tukang");
         }
     }
 } else {

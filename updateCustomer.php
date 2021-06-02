@@ -5,8 +5,9 @@ if (!empty($_POST['id'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $handphone = $_POST['handphone'];
-    $password = md5($_POST['password']);
     $id = $_POST['id'];
+
+
 
     if (empty($_FILES['avatar'])) {
         set_response(false, "Foto harus diisi");
@@ -17,7 +18,7 @@ if (!empty($_POST['id'])) {
         $dir = "avatar/";
         move_uploaded_file($file, $dir . $avatar);
 
-        $query = "UPDATE customer set name = '$name', email = '$email', handphone = '$handphone', password = '$password', avatar = '$avatar' WHERE id = '$id'";
+        $query = "UPDATE customer set name = '$name', email = '$email', handphone = '$handphone', avatar = '$avatar' WHERE id = '$id'";
         $update = pg_query($connect, $query);
 
         if ($update) {

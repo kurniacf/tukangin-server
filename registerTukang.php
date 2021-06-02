@@ -6,6 +6,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
     $email = $_POST['email'];
     $address = $_POST['address'];
     $handphone = $_POST['handphone'];
+    $nik = $_POST['nik'];
     $password = md5($_POST['password']);
 
     $query = "SELECT * FROM customer WHERE email = '$email'";
@@ -29,7 +30,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
             $dir2 = "selfie_ktp/";
             move_uploaded_file($file2, $dir2 . $selfie_ktp);
 
-            $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password')";
+            $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password, nik) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password', '$nik')";
 
             $insert = pg_query($connect, $query);
 

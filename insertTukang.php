@@ -1,14 +1,15 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['handphone']) && !empty($_POST['password'])) {
+if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['handphone']) && !empty($_POST['password']) && !empty($_POST['nik'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $address = $_POST['address'];
     $handphone = $_POST['handphone'];
+    $nik = $_POST['nik'];
     $password = md5($_POST['password']);
 
-    if (empty($_FILES['ktp']) || empty($_FILES['selfie_ktp'])) {
+    if (empty($_FILES['ktp']) && empty($_FILES['selfie_ktp'])) {
         set_response(false, "Foto harus diisi");
     } else {
         $ktp = $_FILES['ktp']['name'];
@@ -21,7 +22,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
         $dir2 = "selfie_ktp/";
         move_uploaded_file($file2, $dir2 . $selfie_ktp);
 
-        $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password')";
+        $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password, nik) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password', '$nik')";
 
         $insert = pg_query($connect, $query);
 
