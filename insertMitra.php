@@ -12,7 +12,7 @@ if (!empty($_POST['name']) && !empty($_POST['description'])) {
         $file = $_FILES['image']['tmp_name'];
 
         $dir = "image/";
-        move_uploaded_file($file, $dir . $avatar);
+        move_uploaded_file($file, $dir . $image);
 
         $query = "INSERT INTO mitra(name, description, image) VALUES ('$name', '$description', '$image')";
 
