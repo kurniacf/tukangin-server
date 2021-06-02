@@ -1,12 +1,13 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['handphone']) && !empty($_POST['password'])) {
+if (!empty($_POST['id'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $address = $_POST['address'];
     $handphone = $_POST['handphone'];
     $password = md5($_POST['password']);
+    $id = $_POST['id'];
 
     if (empty($_FILES['ktp']) || empty($_FILES['selfie_ktp'])) {
         set_response(false, "Foto harus diisi");

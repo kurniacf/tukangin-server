@@ -5,6 +5,7 @@ if (!empty($_POST['tukang_id'])) {
     $tukang_id = $_POST['tukang_id'];
     $nama_divisi = $_POST['nama_divisi'];
     $harga = $_POST['harga'];
+    $id = $_POST['id'];
 
     $query = "UPDATE divisi set tukang_id = '$tukang_id', nama_divisi = '$nama_divisi', harga = '$harga' WHERE id = '$id'";
 

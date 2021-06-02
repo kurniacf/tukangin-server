@@ -10,6 +10,7 @@ if (!empty($_POST['id'])) {
     $jalan = $_POST['jalan'];
     $nomor_rumah = $_POST['nomor_rumah'];
     $kode_pos = $_POST['kode_pos'];
+    $id = $_POST['id'];
 
     $query = "UPDATE alamat set customer_id = '$customer_id', provinsi = '$provinsi', kabupaten = '$kabupaten', kelurahan = '$kelurahan', jalan = '$jalan', nomor_rumah = '$nomor_rumah', kode_pos = '$kode_pos' WHERE id = '$id'";
     $update = pg_query($connect, $query);
