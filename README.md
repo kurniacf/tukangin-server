@@ -1,6 +1,7 @@
 # tukangin-server
 Server database Tukangin
 
-# Endpont
+# Endpoint
 Customer
+
   -Login : loginCustomer.php
