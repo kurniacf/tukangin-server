@@ -10,16 +10,16 @@ if (!empty($_POST['id'])) {
     $password = md5($_POST['password']);
     $id = $_POST['id'];
 
-    if (empty($_FILES['ktp']) && empty($_FILES['selfie_ktp'])) {
+    if (empty($_FILES['avatar_tukang'])) {
         set_response(false, "Foto harus diisi");
     } else {
-        $avatarTukang = $_FILES['avatarTukang']['name'];
-        $file = $_FILES['avatarTukang']['tmp_name'];
+        $avatar_tukang = $_FILES['avatar_tukang']['name'];
+        $file = $_FILES['avatar_tukang']['tmp_name'];
 
-        $dir = "avatarTukang/";
-        move_uploaded_file($file, $dir . $avatarTukang);
+        $dir = "avatar_tukang/";
+        move_uploaded_file($file, $dir . $avatar_tukang);
 
-        $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', avatarTukang = '$avatarTukang', password = '$password', nik = '$nik' WHERE id = '$id'";
+        $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', avatar_tukang = '$avatar_tukang', password = '$password', nik = '$nik' WHERE id = '$id'";
 
         $update = pg_query($connect, $query);
 
