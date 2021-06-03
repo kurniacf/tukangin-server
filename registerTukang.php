@@ -9,12 +9,12 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
     $nik = $_POST['nik'];
     $password = md5($_POST['password']);
 
-    $query = "SELECT * FROM customer WHERE email = '$email'";
+    $query = "SELECT * FROM tukang WHERE email = '$email'";
     $get = pg_query($connect, $query);
 
     $data = array();
 
-    if (pg_num_rows($get) > 0) {
+    if (pg_num_rows($get) == 0) {
         set_response(true, "Email sudah terdaftar", $data);
     } else {
         if (empty($_FILES['ktp']) || empty($_FILES['selfie_ktp'])) {

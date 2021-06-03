@@ -12,7 +12,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['handphon
 
     $data = array();
 
-    if (pg_num_rows($get) > 0) {
+    if (pg_num_rows($get) == 0) {
         set_response(true, "Email sudah terdaftar", $data);
     } else {
         $query = "INSERT INTO customer(name, email, handphone, password) VALUES ('$name', '$email', '$handphone', '$password')";
