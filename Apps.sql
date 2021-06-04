@@ -193,3 +193,7 @@ CREATE TABLE pesanan(
     customer_id BIGINT REFERENCES customer (id) NOT NULL,
     tukang_id BIGINT REFERENCES tukang (id) NOT NULL
 );
+
+ALTER TABLE pesanan 
+    ADD COLUMN jumlah_tukang INTEGER, 
+    ADD COLUMN harga INTEGER;

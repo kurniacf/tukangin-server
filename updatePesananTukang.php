@@ -6,7 +6,7 @@ if (!empty($_POST['id'])) {
     $selesai = $_POST['selesai'];
     $id = $_POST['id'];
 
-    $query = "UPDATE mitra set isactive = '$isactive', selesai = '$selesai' WHERE id = '$id'";
+    $query = "UPDATE pesanan set isactive = '$isactive', selesai = '$selesai' WHERE id = '$id'";
     $update = pg_query($connect, $query);
 
     if ($update) {
