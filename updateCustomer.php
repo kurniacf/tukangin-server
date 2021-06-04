@@ -12,17 +12,14 @@ if (!empty($_POST['id'])) {
 
     $data = array();
 
-    if (pg_num_rows($get) == 0) {
-        set_response(true, "Email sudah terdaftar", $data);
-    } else {
-        $query = "UPDATE customer set name = '$name', email = '$email', handphone = '$handphone' WHERE id = '$id'";
-        $update = pg_query($connect, $query);
 
-        if ($update) {
-            set_response(true, "Success update customer");
-        } else {
-            set_response(false, "Failed update customer");
-        }
+    $query = "UPDATE customer set name = '$name', email = '$email', handphone = '$handphone' WHERE id = '$id'";
+    $update = pg_query($connect, $query);
+
+    if ($update) {
+        set_response(true, "Success update customer");
+    } else {
+        set_response(false, "Failed update customer");
     }
 } else {
     set_response(false, "harus diisi");
