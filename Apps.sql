@@ -181,3 +181,15 @@ ALTER TABLE mitra ALTER COLUMN image TYPE BYTEA USING (trim(image)::BYTEA);
 
 ALTER TABLE tukang 
     ADD COLUMN nik VARCHAR ;
+
+CREATE TABLE pesanan(
+    id SERIAL PRIMARY KEY,
+    address VARCHAR(255) NOT NULL,
+    foto VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    jadwal DATE NOT NULL,
+    isactive BOOLEAN NOT NULL,
+    selesai BOOLEAN NOT NULL,
+    customer_id BIGINT REFERENCES customer (id) NOT NULL,
+    tukang_id BIGINT REFERENCES tukang (id) NOT NULL
+);
