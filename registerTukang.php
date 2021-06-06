@@ -14,7 +14,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
 
     $data = array();
 
-    if (pg_num_rows($get) == 0) {
+    if (pg_num_rows($get)) {
         set_response(true, "Email sudah terdaftar", $data);
     } else {
         if (empty($_FILES['ktp']) || empty($_FILES['selfie_ktp'])) {
