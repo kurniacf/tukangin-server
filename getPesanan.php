@@ -5,18 +5,10 @@ include_once('koneksi.php');
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
     $query = "SELECT * FROM pesanan WHERE id = '$id'";
-} else {
-    $query = "SELECT * FROM pesanan";
-}
-
-if (!empty($_GET['tukang_id'])) {
+} else if (!empty($_GET['tukang_id'])) {
     $tukang_id = $_GET['tukang_id'];
     $query = "SELECT * FROM pesanan WHERE tukang_id = '$tukang_id'";
-} else {
-    $query = "SELECT * FROM pesanan";
-}
-
-if (!empty($_GET['customer_id'])) {
+} else if (!empty($_GET['customer_id'])) {
     $customer_id = $_GET['customer_id'];
     $query = "SELECT * FROM pesanan WHERE customer_id = '$customer_id'";
 } else {
