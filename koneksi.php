@@ -2,7 +2,7 @@
 //local
 // $host = "localhost";
 // $port = "5432";
-// $user = "postgres";
+// $user = "";
 // $password = "";
 // $dbname = "";
 
