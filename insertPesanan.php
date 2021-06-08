@@ -28,7 +28,7 @@ if (!empty($_POST['address']) && !empty($_POST['description']) && !empty($_POST[
                 $harga += 100000;
             }
 
-            $query = "INSERT INTO pesanan(address, description, jadwal, isactive, selesai, customer_id, foto, jumlah_tukang, harga) VALUES ('$address', '$description', '$jadwal', FALSE, FALSE, '$customer_id', '$foto', '$jumlah_tukang', '$harga')";
+            $query = "INSERT INTO pesanan(address, description, jadwal, isactive, selesai, customer_id, jumlah_tukang, harga, foto) VALUES ('$address', '$description', '$jadwal', FALSE, FALSE, '$customer_id', '$jumlah_tukang', '$harga', '$foto')";
 
             $insert = pg_query($connect, $query);
 
