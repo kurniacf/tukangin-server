@@ -5,15 +5,12 @@ if (!empty($_POST['address']) && !empty($_POST['description']) && !empty($_POST[
     $address = $_POST['address'];
     $description = $_POST['description'];
     $jadwal = $_POST['jadwal'];
-    // $isactive = FALSE;
-    // $selesai = FALSE;
     $customer_id = $_POST['customer_id'];
-    //$tukang_id = $_POST['tukang_id'];
     $jumlah_tukang = $_POST['jumlah_tukang'];
     $harga = $_POST['harga'];
 
-
     if (empty($_POST['harga'])) {
+
         if (empty($_FILES['foto'])) {
             set_response(false, "Foto harus diisi");
         } else {
@@ -28,7 +25,7 @@ if (!empty($_POST['address']) && !empty($_POST['description']) && !empty($_POST[
                 $harga += 100000;
             }
 
-            $query = "INSERT INTO pesanan(address, description, jadwal, isactive, selesai, customer_id, jumlah_tukang, harga, foto) VALUES ('$address', '$description', '$jadwal', FALSE, FALSE, '$customer_id', '$jumlah_tukang', '$harga', '$foto')";
+            $query = "INSERT INTO pesanan(address, description, jadwal, customer_id, jumlah_tukang, harga, foto, isactive, selesai) VALUES ('$address', '$description', '$jadwal', '$customer_id', '$jumlah_tukang', '$harga','$foto', FALSE, FALSE)";
 
             $insert = pg_query($connect, $query);
 
