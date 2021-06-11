@@ -3,16 +3,16 @@ include_once('koneksi.php');
 
 if (!empty($_POST['id'])) {
     $isactive = $_POST['isactive'];
-    $selesai = $_POST['selesai'];
+    $tukang_id = $_POST['tukang_id'];
     $id = $_POST['id'];
 
-    $query = "UPDATE pesanan set isactive = '$isactive', selesai = '$selesai' WHERE id = '$id'";
+    $query = "UPDATE pesanan set isactive = '$isactive', tukang_id = '$tukang_id' WHERE id = '$id'";
     $update = pg_query($connect, $query);
 
     if ($update) {
-        set_response(true, "Success update");
+        set_response(true, "Berhasil diambil");
     } else {
-        set_response(false, "Failed update");
+        set_response(false, "Sedang dikerjakan");
     }
 } else {
     set_response(false, "harus diisi");
