@@ -85,3 +85,6 @@ ALTER TABLE customer
 
 ALTER TABLE tukang
     ADD COLUMN akun_bank VARCHAR(255);
+
+ALTER TABLE pesanan
+    ADD COLUMN lunas BOOLEAN;

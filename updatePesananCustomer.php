@@ -8,6 +8,7 @@ if (!empty($_POST['id'])) {
     $id = $_POST['id'];
     $jumlah_tukang = $_POST['jumlah_tukang'];
     $harga = $_POST['harga'];
+    $selesai = $_POST['selesai'];
 
 
     if (!empty($_POST['harga'])) {
@@ -25,7 +26,7 @@ if (!empty($_POST['id'])) {
                 $harga += 100000;
             }
 
-            $query = "UPDATE pesanan set address = '$address', description = '$description', jadwal = '$jadwal', foto = '$foto', jumlah_tukang = '$jumlah_tukang', harga = '$harga'  WHERE id = '$id'";
+            $query = "UPDATE pesanan set address = '$address', description = '$description', jadwal = '$jadwal', foto = '$foto', jumlah_tukang = '$jumlah_tukang', harga = '$harga', selesai = '$selesai'  WHERE id = '$id'";
             $update = pg_query($connect, $query);
 
             if ($update) {
