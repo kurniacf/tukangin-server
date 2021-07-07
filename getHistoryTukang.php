@@ -7,9 +7,7 @@ if (!empty($_GET['id'])) {
     $query = "SELECT * FROM pesanan WHERE id = '$id'";
 } else if (!empty($_GET['tukang_id'])) {
     $tukang_id = $_GET['tukang_id'];
-    $query1 = "UPDATE pesanan set selesai = 'TRUE' WHERE tukang_id = '$tukang_id'";
-    $update = pg_query($connect, $query1);
-    $query = "SELECT * FROM pesanan WHERE tukang_id = '$tukang_id'";
+    $query = "SELECT * FROM pesanan WHERE tukang_id = '$tukang_id' AND selesai = 'TRUE'";
 }
 
 $get = pg_query($connect, $query);
