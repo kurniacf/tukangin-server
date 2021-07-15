@@ -4,9 +4,8 @@ include_once('koneksi.php');
 if (!empty($_POST['tukang_id'])) {
     $tukang_id = $_POST['tukang_id'];
     $nama_divisi = $_POST['nama_divisi'];
-    $harga = $_POST['harga'];
 
-    $query = "INSERT INTO divisi(tukang_id, nama_divisi, harga) VALUES ('$tukang_id', '$nama_divisi', '$harga')";
+    $query = "INSERT INTO divisi(tukang_id, nama_divisi) VALUES ('$tukang_id', '$nama_divisi')";
 
     $insert = pg_query($connect, $query);
 
