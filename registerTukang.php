@@ -8,6 +8,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
     $handphone = $_POST['handphone'];
     $nik = $_POST['nik'];
     $password = md5($_POST['password']);
+    $idfirebase = $_POST['idfirebase'];
 
     $query = "SELECT * FROM tukang WHERE email = '$email'";
     $get = pg_query($connect, $query);
@@ -30,7 +31,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['address'
             $dir2 = "selfie_ktp/";
             move_uploaded_file($file2, $dir2 . $selfie_ktp);
 
-            $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password, nik) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password', '$nik')";
+            $query = "INSERT INTO tukang(name, email, address, handphone, ktp, selfie_ktp, password, nik, idfirebase) VALUES ('$name', '$email', '$address','$handphone', '$ktp', '$selfie_ktp', '$password', '$nik', '$idfirebase')";
 
             $insert = pg_query($connect, $query);
 

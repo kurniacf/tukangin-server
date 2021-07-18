@@ -6,16 +6,17 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['handphon
     $email = $_POST['email'];
     $handphone = $_POST['handphone'];
     $password = md5($_POST['password']);
+    $idfirebase = $_POST['idfirebase'];
 
     $query = "SELECT * FROM customer WHERE email = '$email'";
     $get = pg_query($connect, $query);
 
     $data = array();
 
-    if (pg_num_rows($get) == 0) {
+    if (pg_num_rows($get)) {
         set_response(true, "Email sudah terdaftar", $data);
     } else {
-        $query = "INSERT INTO customer(name, email, handphone, password) VALUES ('$name', '$email', '$handphone', '$password')";
+        $query = "INSERT INTO customer(name, email, handphone, password, idfirebase) VALUES ('$name', '$email', '$handphone', '$password', '$idfirebase')";
 
         $insert = pg_query($connect, $query);
 
