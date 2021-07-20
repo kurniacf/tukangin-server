@@ -8,6 +8,7 @@ if (!empty($_POST['id'])) {
     $handphone = $_POST['handphone'];
     $akun_bank = $_POST['akun_bank'];
     $idfirebase = $_POST['idfirebase'];
+    $nama_divisi = $_POST['nama_divisi'];
     $id = $_POST['id'];
 
     $query = "SELECT * FROM tukang WHERE email = '$email'";
@@ -16,7 +17,7 @@ if (!empty($_POST['id'])) {
     $data = array();
 
 
-    $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', akun_bank = '$akun_bank', idfirebase = '$idfirebase'  WHERE id = '$id'";
+    $query = "UPDATE tukang set name = '$name', email = '$email', address = '$address', handphone = '$handphone', akun_bank = '$akun_bank', idfirebase = '$idfirebase', nama_divisi = '$nama_divisi'  WHERE id = '$id'";
     $update = pg_query($connect, $query);
 
     if ($update) {

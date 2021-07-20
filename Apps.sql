@@ -94,3 +94,11 @@ ALTER TABLE tukang
 
 ALTER TABLE customer
     ADD COLUMN idFirebase VARCHAR(255);
+
+ALTER TABLE tukang
+    ADD COLUMN nama_divisi VARCHAR(50);
+
+SELECT * FROM tukang JOIN divisi ON tukang.id = divisi.tukang_id WHERE tukang.id = $tukang_id
+
+ALTER TABLE tukang
+    ADD COLUMN nama_divisi VARCHAR[] REFERENCES divisi(id)

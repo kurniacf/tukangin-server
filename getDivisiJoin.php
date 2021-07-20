@@ -4,9 +4,11 @@ include_once('koneksi.php');
 
 if (!empty($_GET['tukang_id'])) {
     $tukang_id = $_GET['tukang_id'];
-    $query = "SELECT * FROM pesanan JOIN divisi ON pesanan.tukang_id = divisi.tukang_id WHERE pesanan.tukang_id = $tukang_id";
+    //$query = "SELECT * FROM pesanan JOIN divisi ON pesanan.tukang_id = divisi.tukang_id WHERE pesanan.tukang_id = $tukang_id";
+    $query = "SELECT * FROM tukang JOIN divisi ON tukang.id = divisi.tukang_id WHERE tukang.id = $tukang_id";
 } else {
-    $query = "SELECT * FROM pesanan JOIN divisi ON pesanan.tukang_id = divisi.tukang_id";
+    // $query = "SELECT * FROM pesanan JOIN divisi ON pesanan.tukang_id = divisi.tukang_id";
+    $query = "SELECT * FROM tukang JOIN divisi ON tukang.id = divisi.tukang_id";
 }
 
 $get = pg_query($connect, $query);
