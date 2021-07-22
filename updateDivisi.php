@@ -1,12 +1,11 @@
 <?php
 include_once('koneksi.php');
 
-if (!empty($_POST['tukang_id'])) {
-    $tukang_id = $_POST['tukang_id'];
+if (!empty($_POST['id'])) {
     $nama_divisi = $_POST['nama_divisi'];
     $id = $_POST['id'];
 
-    $query = "UPDATE divisi set tukang_id = '$tukang_id', nama_divisi = '$nama_divisi' WHERE id = '$id'";
+    $query = "UPDATE divisi set nama_divisi = '$nama_divisi' WHERE id = '$id'";
 
     $update = pg_query($connect, $query);
 

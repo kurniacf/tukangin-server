@@ -102,3 +102,17 @@ SELECT * FROM tukang JOIN divisi ON tukang.id = divisi.tukang_id WHERE tukang.id
 
 ALTER TABLE tukang
     ADD COLUMN nama_divisi VARCHAR[] REFERENCES divisi(id)
+
+INSERT INTO users(name, nama_divisi) VALUES ('budi', array['kuli', 'mandor']);
+
+ALTER TABLE tukang
+    ADD COLUMN no_divisi INTEGER[];
+
+ALTER TABLE tukang
+    ADD COLUMN no_divisi INTEGER[];
+
+CREATE TABLE divisi(
+    id INTEGER[],
+    nama_divisi VARCHAR(255),
+    PRIMARY KEY (id)
+);
